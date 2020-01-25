@@ -7,7 +7,7 @@ function component() {
 
     element.innerHTML = _.join(['hello', 'webpack'], ' ');
 
-    btn.innerHTML = '点击这里，然后查看console.log';
+    btn.innerHTML = '请点击这里，然后查看console.log';
     btn.onclick = printMe;
 
     element.appendChild(btn);
