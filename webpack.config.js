@@ -4,15 +4,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    // entry: {
-    //     "core-js/modules/es6.promise",
-    //     "core-js/modules/es6.array.iterator",
-    //     index: './src/index.js'
-    // },
-    entry: [
-        
-        path.resolve(__dirname, "src/index.js")
-    ],
+    entry: {
+        index: './src/index.js'
+    },
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
