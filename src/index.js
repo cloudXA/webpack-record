@@ -1,27 +1,16 @@
 import _ from 'lodash';
-import printMe from './print.js';
-import './style.css';
+import { cube } from './math.js';
 
 function component() {
-    var element = document.createElement('div');
-    var btn = document.createElement('button');
+    var element = document.createElement('pre');
 
-    element.innerHTML = _.join(['hello', 'webpack'], ' ');
-
-    btn.innerHTML = '请点击这里，然后查看console.log';
-    btn.onclick = printMe;
-
-    element.appendChild(btn);
+    element.innerHTML = [
+        'Hello webpack！',
+        '5 cubed is equal to ' + cube(5)
+    ].join('\n\n');
 
     return element;
 }
 
 document.body.appendChild(component());
 
-
-if(module.hot) {
-    module.hot.accept('./print.js', function() {
-        console.log('Accepting the updated printMe module!');
-        printMe();
-    })
-}
