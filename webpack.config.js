@@ -4,19 +4,19 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: {
-        index: './src/index.js',
-        another: './src/another-module.js'
-    },
+    // entry: {
+    //     "core-js/modules/es6.promise",
+    //     "core-js/modules/es6.array.iterator",
+    //     index: './src/index.js'
+    // },
+    entry: [
+        
+        path.resolve(__dirname, "src/index.js")
+    ],
     output: {
         filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
-    },
-    // 防止重复(prevent duplication)
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
     },
     devServer: {
         contentBase: './dist',
