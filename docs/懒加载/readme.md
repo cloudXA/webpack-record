@@ -4,12 +4,14 @@
 
 
 
-逻辑断点处实现懒加载：
+#### 逻辑断点处实现懒加载：
 
-`button.onclick = e => import('./print').then(module => {
+`button.onclick = e => import('./print').then(module => {`
 
-       var pint = module.default;
+`       var pint = module.default;`
 
-        pint();
+`        pint();`
 
-})`
+`})`
+
+

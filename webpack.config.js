@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 
 module.exports = {
     mode: 'development',
@@ -8,8 +10,7 @@ module.exports = {
         index: './src/index.js'
     },
     output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist')
     },
     devServer: {
@@ -18,9 +19,22 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-        title: "管理输出",
+            title: "Caching缓存",
         }),
-        new CleanWebpackPlugin()
-    ]
+        new CleanWebpackPlugin(),
+        new webpack.HashedModuleIdsPlugin()
+    ],
+    optimization: {
+            runtimeChunk: 'single',
+            splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    }
     
 }
